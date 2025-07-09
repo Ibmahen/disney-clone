@@ -15,7 +15,15 @@ const getTrendingVideos = () =>
 const getMovieByGenreId = (genreId) =>
   axios.get(`${movieBaseUrl}/discover/movie?with_genres=${genreId}`, { headers });
 
+const getMovieDetail = (movieId) => 
+  axios.get(`${movieBaseUrl}/movie/${movieId}`, { headers });
+
+const searchMovies = (query) => 
+  axios.get(`${movieBaseUrl}/search/movie?query=${query}`, { headers });
+
 export default {
   getTrendingVideos,
   getMovieByGenreId,
+  getMovieDetail,
+  searchMovies,
 };

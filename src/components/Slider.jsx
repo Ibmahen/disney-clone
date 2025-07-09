@@ -5,7 +5,7 @@ import GlobalApi from "../Services/GlobalApi";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/original";
 const screenWidth = window.innerWidth;
 
-function Slider() {
+function Slider({ onMovieClick }) {
   const [movieList, setMovieList] = useState([]);
   const elementRef = useRef();
 
@@ -42,10 +42,12 @@ function Slider() {
         className="flex overflow-x-auto w-full px-16 py-4 scrollbar-hide scroll-smooth"
         ref={elementRef}
       >
-        {movieList.map((item, index) => (
+        {movieList.map((item) => (
           <img
+            key={item.id}
             src={IMAGE_BASE_URL + item.backdrop_path}
-            className="min-w-full  md:h-[310px] object-cover object-left-top mr-5 rounded-md hover:border-[4px] border-gray-400 transition-all duration-100 ease-in"
+            className="min-w-full  md:h-[310px] object-cover object-left-top mr-5 rounded-md hover:border-[4px] border-[#3a5bff] transition-all duration-100 ease-in cursor-pointer"
+            onClick={() => onMovieClick(item.id)}
           />
         ))}
       </div>

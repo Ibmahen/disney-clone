@@ -4,7 +4,7 @@ import MovieCard from "./MovieCard";
 import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
 import HrMovieCard from "./HrMovieCard";
 
-function MovieList({ genreId, index_, genreName }) {
+function MovieList({ genreId, index_, genreName, onMovieClick }) {
   const [movieList, setMovieList] = useState([]);
   const elementRef = useRef(null);
 
@@ -40,7 +40,7 @@ function MovieList({ genreId, index_, genreName }) {
       >
         {movieList.map((item) =>
           index_ % 3 === 0 ? (
-            <HrMovieCard key={item.id} movie={item} />
+            <HrMovieCard key={item.id} movie={item} onClick={onMovieClick} />
           ) : (
             <MovieCard
               key={item.id}
@@ -50,6 +50,7 @@ function MovieList({ genreId, index_, genreName }) {
                   ? "large"
                   : ""
               }
+              onClick={onMovieClick}
             />
           )
         )}
